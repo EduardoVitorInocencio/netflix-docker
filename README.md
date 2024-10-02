@@ -17,10 +17,10 @@ This repository contains a containerized full-stack application with frontend, b
 
 To clone the repository, use the following command:
 
-\`\`\`bash
+```bash
 git clone <repository-url>
 cd <repository-folder>
-\`\`\`
+```
 
 Replace `<repository-url>` with the actual GitHub URL of this repository.
 
@@ -30,7 +30,7 @@ Replace `<repository-url>` with the actual GitHub URL of this repository.
 
 The `frontend` service is based on the following Dockerfile:
 
-\`\`\`Dockerfile
+```Dockerfile
 FROM node:14.16.0-alpine3.13
 
 RUN addgroup app && adduser -S -G app app
@@ -44,7 +44,7 @@ COPY . .
 EXPOSE 3000
 
 CMD ["npm", "start"]
-\`\`\`
+```
 
 **Key Commands**:
 - **WORKDIR /app**: Sets the working directory inside the container.
@@ -57,7 +57,7 @@ CMD ["npm", "start"]
 
 The `backend` service uses the following Dockerfile:
 
-\`\`\`Dockerfile
+```Dockerfile
 FROM node:14.16.0-alpine3.13
 
 RUN addgroup app && adduser -S -G app app
@@ -71,7 +71,7 @@ COPY . .
 EXPOSE 3001
 
 CMD ["npm", "start"]
-\`\`\`
+```
 
 **Key Commands**:
 - **WORKDIR /app**: Sets the working directory for the backend service.
@@ -84,7 +84,7 @@ CMD ["npm", "start"]
 
 The `docker-compose.yml` file is used to orchestrate the frontend, backend, and database services:
 
-\`\`\`yaml
+```yaml
 version: "3.8"
 
 services:
@@ -114,7 +114,7 @@ services:
 
 volumes:
   vidly:
-\`\`\`
+```
 
 ### Explanation of `docker-compose.yml`:
 
@@ -128,9 +128,9 @@ volumes:
 
 To start the entire application using Docker Compose, run the following command from the root directory:
 
-\`\`\`bash
+```bash
 docker-compose up --build
-\`\`\`
+```
 
 This command will:
 - Build the images for frontend, backend, and MongoDB.
@@ -143,9 +143,9 @@ This command will:
 
 To stop the running containers:
 
-\`\`\`bash
+```bash
 docker-compose down
-\`\`\`
+```
 
 This will stop and remove the containers, but the data will remain in the `vidly` volume.
 
